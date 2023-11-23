@@ -16,14 +16,14 @@ import java.util.List;
 public class Car {
     private List<Door> doors;
     private List<Wheel> wheels;
-    private List<Roof> roofs;
+    private Roof roof;
     private Color color;
     private CompanyName companyName;
 
     public Car() {
         this.doors = new ArrayList<>();
         this.wheels = new ArrayList<>();
-        this.roofs = new ArrayList<>();
+        this.roof = null;
         this.color = Color.BLACK;
     }
 
@@ -39,8 +39,8 @@ public class Car {
         return 0;
     }
 
-    public int getColor() {
-        return 0;
+    public Color getColor() {
+        return null;
     }
 
     public CompanyName getCompanyName() {

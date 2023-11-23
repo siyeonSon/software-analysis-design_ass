@@ -52,8 +52,12 @@ public class SimpleLogger {
      * If necessary, you can make your own methods or classes so that the corresponding tests are passed
      */
 
+    private static class SimpleLoggerHolder {
+        private static final SimpleLogger INSTANCE = new SimpleLogger();
+    }
+
     public static SimpleLogger getInstance() {
-        return null;
+        return SimpleLoggerHolder.INSTANCE;
     }
 
     /**

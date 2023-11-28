@@ -28,7 +28,7 @@ public class LoggingBuilderProxyDecorator extends BaseBuilderProxyDecorator {
     @Override
     public Car getCar() {
         logInfoMessage();
-        return car;
+        return super.getCar();
     }
 
     private void logInfoMessage() {

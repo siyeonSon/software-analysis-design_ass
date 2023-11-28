@@ -20,30 +20,27 @@ public class CheckingBuilderProxyDecorator extends BaseBuilderProxyDecorator {
 
     @Override
     public Car getCar() {
-        if (isDoorInRange() && isWheelInRange() && isEvenWheel() && isSingleRoof()) {
-            return car;
+        Car car = super.getCar();
+        if (isDoorOutOfRange(car) || isWheelOutOfRange(car) || isOddWheel(car) || isNotSingleRoof(car)) {
+            return null;
         }
-        return null;
+        return car;
     }
 
-    private boolean isDoorInRange() {
-        int numDoors = car.numDoors();
-        return 4 <= numDoors && numDoors <= 6;
+    private boolean isDoorOutOfRange(Car car) {
+        return car.numDoors() < 4 || 6 < car.numDoors();
     }
 
-    private boolean isWheelInRange() {
-        int numWheels = car.numWheels();
-        return 2 <= numWheels && numWheels <= 10;
+    private boolean isWheelOutOfRange(Car car) {
+        return car.numWheels() < 2 || 10 < car.numWheels();
     }
 
-    private boolean isEvenWheel() {
-        int numWheels = car.numWheels();
-        return numWheels % 2 == 0;
+    private boolean isOddWheel(Car car) {
+        return car.numWheels() % 2 != 0;
     }
 
-    private boolean isSingleRoof() {
-        int numRoofs = car.numRoofs();
-        return numRoofs == 1;
+    private boolean isNotSingleRoof(Car car) {
+        return car.numRoofs() != 1;
     }
 }
 /**

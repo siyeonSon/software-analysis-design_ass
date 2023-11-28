@@ -25,38 +25,59 @@ public class Car {
         this.wheels = new ArrayList<>();
         this.roof = null;
         this.color = Color.BLACK;
+        this.companyName = null;
     }
 
     public int numWheels() {
-        return 0;
+        return wheels.size();
     }
 
     public int numDoors() {
-        return 0;
+        return doors.size();
     }
 
     public int numRoofs() {
-        return 0;
+        return roof != null ? 1 : 0;
     }
 
     public Color getColor() {
-        return null;
+        return color;
     }
 
     public CompanyName getCompanyName() {
-        return null;
+        return companyName;
     }
 
     public List<Door> getDoors() {
-        return null;
+        return doors;
     }
 
     public List<Wheel> getWheels() {
-        return null;
+        return wheels;
     }
 
     public Roof getRoof() {
-        return null;
+        return roof;
+    }
+
+    public void setDoors(List<Door> doors) {
+        this.doors = doors;
+    }
+
+    public void setWheels(List<Wheel> wheels) {
+        this.wheels = wheels;
+    }
+
+    public void setRoof(Roof roof) {
+        this.roof = roof;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setCompanyName(CompanyName companyName) {
+        this.companyName = companyName;
     }
 }
 /**

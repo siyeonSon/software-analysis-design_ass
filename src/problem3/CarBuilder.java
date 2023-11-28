@@ -1,6 +1,10 @@
 package problem3;
 
+import java.util.ArrayList;
+import java.util.List;
+import problem2.door.Door;
 import problem2.factory.CarPartsFactory;
+import problem2.wheel.Wheel;
 
 /**
  * ==============BEGIN==============
@@ -8,38 +12,59 @@ import problem2.factory.CarPartsFactory;
  * If necessary, you can make your own methods or classes so that the corresponding tests are passed
  */
 public class CarBuilder implements Builder{
-    public CarBuilder(CarPartsFactory factory) {
+    private Car car;
+    private CarPartsFactory factory;
 
+    public CarBuilder(CarPartsFactory factory) {
+        this.factory = factory;
+        reset();
     }
 
     @Override
     public Builder addDoors(int numDoors) {
-        return null;
+        List<Door> doors = new ArrayList<>();
+        for (int i = 0; i < numDoors; i++) {
+            doors.add(factory.createDoor());
+        }
+        this.car.setDoors(doors);
+        return this;
     }
 
     @Override
     public Builder addWheels(int numWheels) {
-        return null;
+        List<Wheel> wheels = new ArrayList<>();
+        for (int i = 0; i < numWheels; i++) {
+            wheels.add(factory.createWheel());
+        }
+        this.car.setWheels(wheels);
+        return this;
     }
 
     @Override
     public Builder setRoof() {
-        return null;
+        this.car.setRoof(factory.createRoof());
+        return this;
     }
 
     @Override
     public Builder setColor(Color color) {
-        return null;
+        this.car.setColor(color);
+        return this;
     }
 
     @Override
     public Car getCar() {
-        return null;
+        return this.car;
     }
 
     @Override
     public void reset() {
+        this.car = new Car();
+        setCompanyName();
+    }
 
+    private void setCompanyName() {
+        this.car.setCompanyName(factory.getCompanyName());
     }
 }
 /**
